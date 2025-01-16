@@ -31,6 +31,7 @@
     border: none;
     background-color: transparent;
     opacity: 40%;
+    margin-top: 12px;
 }
 
 @media screen and (max-width: 627px) {
