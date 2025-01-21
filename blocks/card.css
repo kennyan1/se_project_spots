@@ -16,6 +16,8 @@
     line-height: 1.2;
     color: #212121;
     margin-bottom: 0;
+    margin-top: 12px;
+    flex: 1;
 }
 
 .card__content {
@@ -32,11 +34,28 @@
     background-color: transparent;
     opacity: 40%;
     margin-top: 12px;
+    cursor: pointer;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card__like-btn:hover {
+    opacity: 100%;
 }
 
 @media screen and (max-width: 627px) {
     .card__image {
         height: 288px;
         max-width: 288px;
+    }
+
+    .card__like-btn {
+        width: 20px;
+        height: 18px;
+    }
+
+    .card__title {
+        font-size: 16px;
     }
 }
