@@ -43,6 +43,7 @@
 .card__like-btn_liked {
     background-image: url(../images/like-icon-liked.svg);
     opacity: 1;
+    background-color: none;
 }
 
 .card__like-btn_liked:hover {
@@ -70,6 +71,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .card__trash-btn:hover {
