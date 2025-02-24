@@ -54,6 +54,7 @@
     background-color: #212121;
     border-radius: 8px;
     width: fit-content;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .modal__close-btn {
