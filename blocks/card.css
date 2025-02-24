@@ -43,7 +43,7 @@
 .card__like-btn_liked {
     background-image: url(../images/like-icon-liked.svg);
     opacity: 1;
-    background-color: none;
+    background-color: transparent;
 }
 
 .card__like-btn_liked:hover {
