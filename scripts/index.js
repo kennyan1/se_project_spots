@@ -118,7 +118,7 @@ function handleAddCardSubmit(evt) {
     closeModal(cardModal);
     cardForm.reset();
     disableButton(cardSubmitBtn, settings);
-    cardSubmitBtn.classList.add("modal__submit-btn_disabled");
+    
 };
 
 profileEditButton.addEventListener("click", ()=> {

@@ -129,7 +129,14 @@
     font-size: 16px;
     font-weight: 500;
     opacity: 70%;
-    display: none;
+    visibility: hidden; 
+    opacity: 0; 
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+.modal__error_visible {
+    visibility: visible;
+    opacity: 1; 
 }
 
 .modal__input_type_error {
