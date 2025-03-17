@@ -79,11 +79,13 @@ function getCardElement(data) {
 function openModal(modal) {
     modal.classList.add("modal_opened");
     document.addEventListener("keydown", handleEscKey);
+    modal.addEventListener("click", handleOverlayClick);
 }
 
 function closeModal(modal) {
     modal.classList.remove("modal_opened");
     document.removeEventListener("keydown", handleEscKey);
+    modal.removeEventListener("click", handleOverlayClick);
 }
 
 function handleEscKey(evt) {
@@ -92,6 +94,12 @@ function handleEscKey(evt) {
         if (openedModal) {
             closeModal(openedModal);
         }
+    }
+}
+
+function handleOverlayClick(evt) {
+    if (evt.target === evt.currentTarget) {
+        closeModal(evt.currentTarget);
     }
 }
 
@@ -116,6 +124,7 @@ function handleAddCardSubmit(evt) {
 profileEditButton.addEventListener("click", ()=> {
     editModalNameInput.value = profileName.textContent;
     editModalDescriptionInput.value = profileDescription.textContent;
+    resetValidation(editFormModal, settings);
     openModal(editModal);
 });
 editModalCloseBtn.addEventListener("click", () => {

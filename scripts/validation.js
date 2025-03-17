@@ -72,6 +72,24 @@ const setEventListeners = (formEl, config) => {
     });
 };
 
+const resetValidation = (formEl, config) => {
+    const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+    const buttonElement = formEl.querySelector(config.submitButtonSelector);
+
+    inputList.forEach((inputElement) => {
+        const errorMsgID = inputElement.id + "-error";
+        const errorMsgEl = formEl.querySelector("#" + errorMsgID);
+
+        if (errorMsgEl) {
+            errorMsgEl.textContent = ""; 
+            errorMsgEl.style.display = "none"; 
+            inputElement.classList.remove(config.inputErrorClass); 
+        }
+    });
+
+    toggleButtonState(inputList, buttonElement, config);
+};
+
 const enableValidation = (config) => {
     const formList = document.querySelectorAll(config.formSelector);
     formList.forEach((formEl) => {
