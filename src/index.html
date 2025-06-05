@@ -106,7 +106,15 @@
                 <form name="edit-profile" class="modal__form" id="edit-avatar-form">
                     <label for="profile-avatar-input" class="modal__label">
                         Profile Picture
-                        <input name="avatar" id="profile-avatar-input" type="text" class="modal__input" placeholder="Paste the link to an image">
+                        <input
+                         name="avatar" 
+                         id="profile-avatar-input" 
+                         type="url" 
+                         class="modal__input" 
+                         placeholder="Paste the link to an image"
+                         required
+                         minlength="2"
+                         maxlength="300">
                         <span id="profile-avatar-input-error" class="modal__error"></span>
                     </label>
                     <button type="submit" class="modal__submit-btn">Save</button>
