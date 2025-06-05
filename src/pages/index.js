@@ -41,7 +41,7 @@ api.getAppInfo().then(([userData, cards]) => {
 
     cards.forEach((item) => {
         const cardElement = getCardElement(item);
-        cardsList.prepend(cardElement);
+        cardsList.append(cardElement);
     });
 }).catch(err => {
     console.error("Failed to load cards:", err);
@@ -107,7 +107,7 @@ function getCardElement(data) {
     cardElement.dataset.cardId = data._id;
     cardElement.likes = data.likes || [];
 
-    updateLikeButtonState(cardLikeBtn, cardElement.likes);
+    updateLikeButtonState(cardLikeBtn, data.isLiked);
 
     cardLikeBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -131,14 +131,12 @@ function getCardElement(data) {
     return cardElement;
 }
 
-function updateLikeButtonState(likeButton, likesArray) {
-    const isLiked = likesArray && likesArray.some(like => like._id === currentUserId);
+function updateLikeButtonState(likeButton, isLiked) {
     if (isLiked) {
         likeButton.classList.add("card__like-btn_liked");
     } else {
         likeButton.classList.remove("card__like-btn_liked");
     }
-    likeButton.dataset.likes = JSON.stringify(likesArray || []);
 }
 
 function handleLike(cardElement, likeButton) {
@@ -155,8 +153,7 @@ function handleLike(cardElement, likeButton) {
     
      api.changeLikeStatus(cardId, isLiked)
         .then((updatedCard) => {
-            cardElement.likes = updatedCard.likes;
-            updateLikeButtonState(likeButton, updatedCard.likes);
+           updateLikeButtonState(likeButton, updatedCard.isLiked);
         })
         .catch(err => {
             console.error("Error updating like status:", err);
@@ -247,6 +244,7 @@ function handleAvatarSubmit(evt) {
       avatarImage.src = userData.avatar;
       closeModal(avatarModal);
       avatarForm.reset();
+      disableButton(avatarSubmitBtn, settings);
     })
     .catch(console.error)
     .finally(() => {
@@ -312,8 +310,7 @@ cardModalBtn.addEventListener("click", () => {
 });
 
 avatarModalBtn.addEventListener("click", () => { 
-    avatarInput.value = avatarImage.src;
-    resetValidation(avatarForm, settings);
+    avatarForm.reset();
     disableButton(avatarSubmitBtn, settings);
     openModal(avatarModal);
 });
